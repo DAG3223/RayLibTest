@@ -32,14 +32,14 @@ void Player::BasicBehaviour::Update()
         if(IsKeyDown(KEY_UP))
         {
             y -= speed;
-        }else if(IsKeyDown(KEY_DOWN))
+        }if(IsKeyDown(KEY_DOWN))
         {
             y += speed; 
         }
         if(IsKeyDown(KEY_LEFT))
         {
             x -= speed;
-        }else if(IsKeyDown(KEY_RIGHT))
+        }if(IsKeyDown(KEY_RIGHT))
         {
             x += speed;
         }
