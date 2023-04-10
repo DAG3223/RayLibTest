@@ -18,19 +18,16 @@ class Button
             char* char_array = new char[length + 1];
 
             std::strcpy(char_array, name.c_str());
+            Wave selectFX = LoadWave("rescources/sounds/select.wav");
+            Wave clickFX = LoadWave("rescources/sounds/click.wav");
 
+            SelectFX_AsSound = LoadSoundFromWave(selectFX);
+            ClickFX_asSound = LoadSoundFromWave(clickFX);
+
+            UnloadWave(clickFX);
+            UnloadWave(selectFX);
+            
             this->name = char_array;
-        };
-
-        void onclick(void (*onclick)()) {onclick();};
-
-        /// @brief Function to find 
-        /// @param posX position X of the cursor
-        /// @param posY position Y of the cursor
-        /// @return true if hovered, false otherwise
-        int isHovered(int posX, int posY)
-        {
-            return (posX < X + 250 && posX > X && posY < Y + 75 && posY > Y);
         };
 
 
@@ -49,22 +46,29 @@ class Button
             {
                 if(!hovered)
                 {
-                    Wave selectFX = LoadWave("rescources/sounds/select.wav");
-                    PlaySound(LoadSoundFromWave(selectFX));
-                    UnloadWave(selectFX);
+                    PlaySound(SelectFX_AsSound);
                 }
                 if(IsMouseButtonPressed(0))
                 {
-                    Wave clickFX = LoadWave("rescources/sounds/click.wav");
-                    PlaySound(LoadSoundFromWave(clickFX));
-                    UnloadWave(clickFX);
+                    PlaySound(ClickFX_asSound);
                     onclick(_setup);
                 }
             }
             hovered = isHovered(GetMouseX(), GetMouseY());
         }
     private:
+        Sound SelectFX_AsSound, ClickFX_asSound;
         bool hovered;
         int X, Y;
         char* name;
+        void onclick(void (*onclick)()) {onclick();};
+
+        /// @brief Function to find 
+        /// @param posX position X of the cursor
+        /// @param posY position Y of the cursor
+        /// @return true if hovered, false otherwise
+        int isHovered(int posX, int posY)
+        {
+            return (posX < X + 250 && posX > X && posY < Y + 75 && posY > Y);
+        };
 };

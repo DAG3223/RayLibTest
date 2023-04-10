@@ -77,5 +77,5 @@ class SimpleScene : public Scene
         Music mainMenuMusic;
         Player *player;
         TextZone *text;
-        vector<Tile*> tileset {new Tile("void", 1280 / 2, 720 / 2, 5, false, {"test", "textbox", "there is 4 entry", "within that box"})};
+        vector<Tile*> tileset {new Tile("void", 1280 / 2, 720 / 2, 5, false, {"", "test", "textbox", "there is 4 entry", "within that box"})};
 };

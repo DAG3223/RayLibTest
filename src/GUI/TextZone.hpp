@@ -11,14 +11,7 @@ class TextZone
 
         static void initLines(std::vector<std::string> lines)
         {
-            // stupid workaround because the first element of the vector is ignored
-            std::vector<std::string> tmp {""};
-
-            for(std::string str : lines)
-            {
-                tmp.insert(tmp.begin(), str);
-            }
-            TextZone::lines = tmp;
+            TextZone::lines = lines;
         }
 
         void Render()
