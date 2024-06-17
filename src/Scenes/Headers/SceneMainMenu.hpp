@@ -26,9 +26,16 @@ class SceneMainMenu : public Scene
             PlayMusicStream(mainMenuMusic);
         }
 
+        ~SceneMainMenu(){
+            delete Quit;
+            delete Credit;
+            delete Option;
+            delete Play;
+        }
+
         static void ButtonQuit()
         {
-            std::cout << "Button QUIT was pressed" << endl;
+            std::cout << "Button QUIT was pressed" << std::endl;
 
             GUIManager::ShouldClose = true;
         }
